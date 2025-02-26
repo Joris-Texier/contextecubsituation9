@@ -13,9 +13,9 @@ for ($i = 1; $i -le $nombreHotes; $i++) {
         $adresseReseau = Read-Host "Entrez l'adresse réseau de l'hôte $i"
 
         try {
-            # Simule l'enregistrement de l'hôte de type "A"
-            Write-Output "Enregistrement de l'hôte $nomHote avec l'adresse $adresseReseau (Type A)..."
-            Write-Host "L'hôte $nomHote a été enregistré avec succès." -ForegroundColor Green
+            # Enregistrement réel de l'hôte de type "A"
+            Add-DnsServerResourceRecord -ZoneName "local.anvers.cub.sioplc.fr" -A -Name $nomHote -IPv4Address $adresseReseau
+            Write-Host "L'hôte $nomHote a été enregistré avec succès (Type A)." -ForegroundColor Green
         } catch {
             Write-Host "Erreur lors de l'enregistrement de l'hôte $nomHote (Type A)." -ForegroundColor Red
         }
@@ -27,9 +27,9 @@ for ($i = 1; $i -le $nombreHotes; $i++) {
         $nomCanonique = Read-Host "Entrez le nom canonique pour l'hôte $i"
 
         try {
-            # Simule l'enregistrement de l'hôte de type "CNAME"
-            Write-Output "Enregistrement de l'hôte $nomHote avec le nom canonique $nomCanonique (Type CNAME)..."
-            Write-Host "L'hôte $nomHote a été enregistré avec succès." -ForegroundColor Green
+            # Enregistrement réel de l'hôte de type "CNAME"
+            Add-DnsServerResourceRecord -ZoneName "local.anvers.cub.sioplc.fr" -CName -Name $nomHote -HostNameAlias $nomCanonique
+            Write-Host "L'hôte $nomHote a été enregistré avec succès (Type CNAME)." -ForegroundColor Green
         } catch {
             Write-Host "Erreur lors de l'enregistrement de l'hôte $nomHote (Type CNAME)." -ForegroundColor Red
         }
