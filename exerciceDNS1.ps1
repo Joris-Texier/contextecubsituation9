@@ -10,7 +10,6 @@ for ($i = 1; $i -le $nombreHotes; $i++) {
 
     try {
         # Enregistrement réel de l'hôte de type "A"
-        # Remplacez 'votrezone.com' par le nom de votre zone DNS
         Add-DnsServerResourceRecord -ZoneName "local.anvers.cub.sioplc.fr" -A -Name $nomHote -IPv4Address $adresseReseau
 
         # Message de succès
