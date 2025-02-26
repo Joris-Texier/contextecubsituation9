@@ -9,13 +9,14 @@ for ($i = 1; $i -le $nombreHotes; $i++) {
     $adresseReseau = Read-Host "Entrez l'adresse réseau de l'hôte $i"
 
     try {
-        # Simule l'enregistrement de l'hôte (remplacez cette partie par le code réel d'enregistrement)
-        Write-Output "Enregistrement de l'hôte $nomHote avec l'adresse $adresseReseau..."
+        # Enregistrement réel de l'hôte de type "A"
+        # Remplacez 'votrezone.com' par le nom de votre zone DNS
+        Add-DnsServerResourceRecord -ZoneName "local.anvers.cub.sioplc.fr" -A -Name $nomHote -IPv4Address $adresseReseau
 
-        # Si l'enregistrement réussit
+        # Message de succès
         Write-Host "L'hôte $nomHote a été enregistré avec succès." -ForegroundColor Green
     } catch {
-        # Si une erreur survient pendant l'enregistrement
+        # Message d'erreur
         Write-Host "Erreur lors de l'enregistrement de l'hôte $nomHote." -ForegroundColor Red
     }
 }
